@@ -275,7 +275,8 @@ function App() {
     setScanResult(null)
     setCopied(false)
     try {
-      const res = await fetch('http://localhost:5000/scan', {
+      const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+      const res = await fetch(`${API}/scan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: targetUrl }),
